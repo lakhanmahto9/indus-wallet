@@ -1,4 +1,5 @@
 import React from "react";
+import { createNewWallet } from "./createnewWallet";
 
 const Home = () => {
   const language = ["Hindi", "English"];
@@ -34,7 +35,13 @@ const Home = () => {
             </p>
           </div>
           <div className="flex flex-col">
-            <button className="text-white bg-blue-700 px-10 py-2 my-4 rounded-full">
+            <button
+              onClick={() => {
+                const wallet = createNewWallet();
+                console.log(wallet)
+              }}
+              className="text-white bg-blue-700 px-10 py-2 my-4 rounded-full"
+            >
               Create a new wallet
             </button>
             <button className="border border-blue-500 text-blue-700 px-10 py-2 mb-4 rounded-full">
