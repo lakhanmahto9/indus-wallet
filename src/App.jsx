@@ -1,11 +1,15 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./components/credentials/Home";
+import Welcome from "./components/credentials/Welcome";
+import GeneralNotice from "./components/credentials/GeneralNotice";
+import CreatePassword from "./components/credentials/manage-password/CreatePassword";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Welcome />} />
+        <Route path="/general-notice" element={<GeneralNotice/>}/>
+        <Route path="/create-password" element={<CreatePassword/>}/>
       </Routes>
     </Router>
   );
