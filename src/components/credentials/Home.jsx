@@ -4,7 +4,7 @@ import React from "react";
 const Home = ({children}) => {
   const language = ["Hindi", "English"];
   return (
-    <div className="w-full h-screen pb-7 bg-blue-50">
+    <div className="w-full h-full pb-7 bg-blue-50">
       <div className="w-full px-4 lg:px-96">
         <div className="p-4 flex justify-between items-center">
         <div className="w-60">

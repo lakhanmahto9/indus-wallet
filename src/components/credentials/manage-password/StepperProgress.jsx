@@ -8,6 +8,9 @@ import StepLabel from "@mui/material/StepLabel";
 import StepConnector, {
   stepConnectorClasses,
 } from "@mui/material/StepConnector";
+import { useSelector } from "react-redux";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
@@ -89,11 +92,18 @@ const steps = [
 ];
 
 export default function StepperProgress() {
+  const password = useSelector((state)=>state.password.password);
+  const [level, setLevel] = useState(0);
+  useEffect(()=>{
+    if(password){
+      setLevel(1);
+    }
+  },[level])
   return (
     <Stack sx={{ width: "100%" }} spacing={4}>
       <Stepper
         alternativeLabel
-        activeStep={0}
+        activeStep={level}
         connector={<ColorlibConnector />}
       >
         {steps.map((label) => (
