@@ -13,6 +13,9 @@ import Lock from "./components/credentials/manage-password/Lock";
 import PrivateRoute from "./components/credentials/manage-password/PrivateRoute";
 import SecureYoreWallet from "./components/credentials/manage-password/SecureYoreWallet";
 import ReviewRecoveryPhrase from "./components/credentials/manage-password/ReviewRecoveryPhrase";
+import ConfirmSecretRecoveryPhrase from "./components/credentials/manage-password/ConfirmSecretRecoveryPhrase";
+import Dashboard from "./components/home/Dashboard";
+
 
 const PublicRoute = ({ element }) => {
   const { password } = useSelector((state) => state.password);
@@ -29,6 +32,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<PublicRoute element={<Welcome />} />} />
+        {/* <Route path="/" element={<Welcome />} />  */}
         <Route
           path="/general-notice"
           element={<PublicRoute element={<GeneralNotice />} />}
@@ -45,7 +49,7 @@ function App() {
             </PrivateRoute>
           }
         />
-         <Route
+        <Route
           path="/review-recovery-phrase"
           element={
             <PrivateRoute>
@@ -54,10 +58,26 @@ function App() {
           }
         />
         <Route
+          path="/confirm-recovery-phrase"
+          element={
+            <PrivateRoute>
+              <ConfirmSecretRecoveryPhrase />
+            </PrivateRoute>
+          }
+        />
+        <Route
           path="/lock"
           element={
             <PrivateRoute>
               <Lock />
+            </PrivateRoute>
+          }
+        />
+         <Route
+          path="/home"
+          element={
+            <PrivateRoute>
+              <Dashboard />
             </PrivateRoute>
           }
         />

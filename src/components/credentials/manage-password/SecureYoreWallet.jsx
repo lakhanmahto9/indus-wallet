@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import HomeSecure from "./HomeSecure";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setLevel } from "../../../redux/slice/passwordSlice";
 
 const SecureYoreWallet = () => {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const recoveryPhrase = () =>{
         navigate("/review-recovery-phrase");
     }
+    useEffect(()=>{
+      dispatch(setLevel(0));
+    },[])
   return (
     <HomeSecure>
       <div className="w-full flex flex-col gap-2 justify-center items-center">

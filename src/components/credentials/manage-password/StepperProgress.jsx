@@ -92,18 +92,20 @@ const steps = [
 ];
 
 export default function StepperProgress() {
-  const password = useSelector((state)=>state.password.password);
-  const [level, setLevel] = useState(0);
+  const {password, level }= useSelector((state)=>state.password);
+  const [stepLevel, setStepLevel] = useState(0);
   useEffect(()=>{
-    if(password){
-      setLevel(1);
+    if(password && level !== 2 ){
+      setStepLevel(1);
+    }else if(password && level == 2){
+      setStepLevel(2);
     }
   },[level])
   return (
     <Stack sx={{ width: "100%" }} spacing={4}>
       <Stepper
         alternativeLabel
-        activeStep={level}
+        activeStep={stepLevel}
         connector={<ColorlibConnector />}
       >
         {steps.map((label) => (

@@ -2,11 +2,17 @@ import React from "react";
 import Home from "./Home";
 import { createNewWallet } from "./createnewWallet";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setAddress, setSecretKey, setSeedPhrase } from "../../redux/slice/passwordSlice";
 
 const Welcome = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
   const createWallet = () => {
     const wallet = createNewWallet();
+    dispatch(setAddress(wallet.address));
+    dispatch(setSeedPhrase(wallet.mnemonic));
+    dispatch(setSecretKey(wallet.privateKey));
     console.log(wallet);
     navigate("/general-notice");
   };

@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import Home from "../Home";
-import { updatePassword } from "../../../redux/slice/passwordSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const Lock = () => {
   const password = useSelector((state) => state.password.password);
-  const dispatch = useDispatch();
   const navigete = useNavigate();
   const [passcode, setPasscode] = useState("");
   const [show, setShow] = useState(false);
@@ -17,7 +15,6 @@ const Lock = () => {
     e.preventDefault();
     if (isFormValid) {
       if (password === passcode) {
-        dispatch(updatePassword(true));
         navigete("/secure-wallet");
       } else {
         setShow(true);
