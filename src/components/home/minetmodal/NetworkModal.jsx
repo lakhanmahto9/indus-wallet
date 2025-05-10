@@ -1,16 +1,42 @@
 import { Dialog } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import AllNetwork from "./AllNetwork";
+import AddCustomeNetwork from "./AddCustomeNetwork";
+import AddRPCUrl from "./AddRPCUrl";
 
-const NetworkModal = ({ selectedNetwork,handleChangeNetwork, open, handleClose }) => {
+const NetworkModal = ({
+  selectedNetwork,
+  handleChangeNetwork,
+  open,
+  handleClose,
+}) => {
+  const [type, setType] = useState("all");
+  const changeNetworkPage = (page) => {
+    setType(page);
+  };
   return (
     <Dialog open={open} onClose={handleClose}>
       <div className="w-full">
-        <AllNetwork
-          selectedNetwork={selectedNetwork}
-          handleChangeNetwork={handleChangeNetwork}
-          handleClose={handleClose}
-        />
+        {type === "all" && (
+          <AllNetwork
+            selectedNetwork={selectedNetwork}
+            handleChangeNetwork={handleChangeNetwork}
+            changeNetworkPage={changeNetworkPage}
+            handleClose={handleClose}
+          />
+        )}
+        {type === "custome" && (
+          <AddCustomeNetwork
+            changeNetworkPage={changeNetworkPage}
+            handleClose={handleClose}
+          />
+        )}
+        {type === "rpcurl" && (
+          <AddRPCUrl
+            changeNetworkPage={changeNetworkPage}
+            handleClose={handleClose}
+          />
+        )}
       </div>
     </Dialog>
   );

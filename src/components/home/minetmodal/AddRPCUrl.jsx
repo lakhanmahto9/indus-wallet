@@ -1,0 +1,115 @@
+import React, { useState } from "react";
+import { CrossIcon, LeftAngleIcon } from "../../../assets/icons/Icons";
+import { useDispatch } from "react-redux";
+import { addRpcUrl } from "../../../redux/slice/rpcurlSlice";
+
+const AddRPCUrl = ({ changeNetworkPage, handleClose }) => {
+  const dispatch = useDispatch();
+  const [formData, setFormData] = useState({
+    rpcUrl: "",
+    rpcName: "",
+    status:true
+  });
+
+  const [formErrors, setFormErrors] = useState({
+    rpcUrl: "",
+  });
+
+  const validateRpcUrl = (value) => {
+    if (!value) return "RPC URL is required";
+    if (!/^https?:\/\//i.test(value))
+      return "URL must start with http:// or https://";
+    return "";
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (name === "rpcUrl") {
+      const errorMsg = validateRpcUrl(value);
+      setFormErrors((prev) => ({ ...prev, rpcUrl: errorMsg }));
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const rpcUrlError = validateRpcUrl(formData.rpcUrl);
+
+    if (rpcUrlError) {
+      setFormErrors({ rpcUrl: rpcUrlError });
+      return;
+    }
+
+    dispatch(addRpcUrl(formData));
+    changeNetworkPage("custome");
+
+    console.log(formData.rpcName, formData.rpcUrl);
+  };
+
+  return (
+    <div className="w-full sm:w-[400px] relative">
+      <div className="w-full p-4 flex justify-center items-center sticky top-0 z-10 bg-white">
+        <div
+          className="absolute left-2 cursor-pointer"
+          onClick={() => changeNetworkPage("custome")}
+        >
+          <LeftAngleIcon color="#000000" width="18" height="18" />
+        </div>
+        <p className="text-lg font-medium">Add RPC URL</p>
+        <div className="absolute right-2 cursor-pointer" onClick={handleClose}>
+          <CrossIcon color="#000000" width="18" height="18" />
+        </div>
+      </div>
+      <form onSubmit={handleSubmit} className="w-full flex flex-col gap-2 p-4">
+        <div className="flex flex-col gap-1">
+          <label
+            htmlFor="rpcurl"
+            className="text-slate-400 font-medium text-sm"
+          >
+            RPC URL
+          </label>
+          <input
+            id="rpcurl"
+            name="rpcUrl"
+            type="text"
+            placeholder="Enter RPC URL"
+            className={`px-4 h-12 border outline-blue-700 ${
+              formErrors.rpcUrl ? "border-red-500" : ""
+            }`}
+            value={formData.rpcUrl}
+            onChange={handleChange}
+          />
+          {formErrors.rpcUrl && (
+            <span className="text-red-500 text-xs">{formErrors.rpcUrl}</span>
+          )}
+        </div>
+        <div className="flex flex-col gap-1">
+          <label
+            htmlFor="rpcurlo"
+            className="text-slate-400 font-medium text-sm"
+          >
+            RPC Name (Optional)
+          </label>
+          <input
+            id="rpcurlo"
+            name="rpcName"
+            type="text"
+            placeholder="Enter a name to identify the URL"
+            className="px-4 h-12 border outline-blue-700"
+            value={formData.rpcName}
+            onChange={handleChange}
+          />
+        </div>
+        <button
+          type="submit"
+          className="h-12 bg-blue-700 rounded-full text-white my-2 w-full"
+        >
+          Add URL
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default AddRPCUrl;
