@@ -4,6 +4,7 @@ import storage from "redux-persist/lib/storage";
 import darkModeReducer from "../slice/darkModeSlice";
 import passwordSlice from "../slice/passwordSlice";
 import rpcUrlSlice from "../slice/rpcurlSlice";
+import deleteExplorerUrl from "../slice/explorerUrlSlice";
 
 const persistConfig = {
   key: "root",
@@ -16,12 +17,12 @@ const persistPasscode = persistReducer(
   passwordSlice
 );
 
-
 const store = configureStore({
   reducer: {
     darkmode: persistedDarkModeReducer,
     password: persistPasscode,
-    rpcurl: rpcUrlSlice
+    rpcurl: rpcUrlSlice,
+    explorerurl: deleteExplorerUrl,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

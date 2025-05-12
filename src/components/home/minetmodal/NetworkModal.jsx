@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import AllNetwork from "./AllNetwork";
 import AddCustomeNetwork from "./AddCustomeNetwork";
 import AddRPCUrl from "./AddRPCUrl";
+import ExplorerURL from "./ExplorerURL";
 
 const NetworkModal = ({
   selectedNetwork,
@@ -33,6 +34,12 @@ const NetworkModal = ({
         )}
         {type === "rpcurl" && (
           <AddRPCUrl
+            changeNetworkPage={changeNetworkPage}
+            handleClose={handleClose}
+          />
+        )}
+         {type === "explorerurl" && (
+          <ExplorerURL
             changeNetworkPage={changeNetworkPage}
             handleClose={handleClose}
           />
