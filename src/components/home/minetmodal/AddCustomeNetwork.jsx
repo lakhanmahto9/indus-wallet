@@ -6,11 +6,24 @@ import {
   LeftAngleIcon,
   UpAngleIcon,
 } from "../../../assets/icons/Icons";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  deleteRpcUrl,
+  setActiveRpcUrl,
+} from "../../../redux/slice/rpcurlSlice";
 
 const AddCustomeNetwork = ({ changeNetworkPage, handleClose }) => {
+  const dispatch = useDispatch();
   const rpcurl = useSelector((state) => state.rpcurl.url || []);
   const [arrow, setArrow] = useState(false);
+  const changeRpc = (id) => {
+    dispatch(setActiveRpcUrl(id));
+    setArrow(false);
+  };
+  const deleteItem = (id) =>{
+    dispatch(deleteRpcUrl(id));
+    setArrow(false);
+  }
   return (
     <div className="w-full sm:w-[400px] relative">
       <div className="w-full p-4 flex justify-center items-center sticky top-0 z-10 bg-white">
@@ -80,6 +93,8 @@ const AddCustomeNetwork = ({ changeNetworkPage, handleClose }) => {
               {rpcurl.length > 0 &&
                 rpcurl.map((item, index) => (
                   <div
+                    onClick={() => changeRpc(index)}
+                    key={index}
                     className={`w-full border p-2 flex justify-between items-center ${
                       item.status ? "bg-[#ebeafa]" : ""
                     }`}
@@ -88,7 +103,10 @@ const AddCustomeNetwork = ({ changeNetworkPage, handleClose }) => {
                       <p className="text-sm font-medium">{item.rpcName}</p>
                       <p className="text-xs text-slate-400">{item.rpcUrl}</p>
                     </div>
-                    <div className="p-1 bg-red-50 rounded-lg">
+                    <div
+                      onClick={() => deleteItem(index)}
+                      className="p-1 bg-red-50 rounded-lg"
+                    >
                       <DeleteIcon color="#ff0000" width="12" height="12" />
                     </div>
                   </div>
@@ -104,12 +122,12 @@ const AddCustomeNetwork = ({ changeNetworkPage, handleClose }) => {
             htmlFor="network-name"
             className="text-sm text-slate-400 font-semibold"
           >
-            Chain ID
+            Block chain ID
           </label>
           <input
             id="network-name"
             type="text"
-            placeholder="Enter chian ID"
+            placeholder="Enter block chian ID"
             className="h-12 border-2 px-4 outline-blue-700"
           />
         </div>
@@ -128,6 +146,7 @@ const AddCustomeNetwork = ({ changeNetworkPage, handleClose }) => {
             className="h-12 border-2 px-4 outline-blue-700"
           />
         </div>
+
       </form>
     </div>
   );

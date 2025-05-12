@@ -9,6 +9,7 @@ const Home = ({ children }) => {
           <Header />
         </div>
         {children}
+        <p className="text-center">© 2025 INDUSYS. All Rights Reserved.</p>
       </div>
     </div>
   );
