@@ -5,7 +5,7 @@ const Usdtpage = () => {
   return (
     <div className="w-full flex justify-center items-center flex-col p-4 sm:p-8">
       <div className="flex gap-2 justify-center items-center">
-        <p className="text-3xl font-bold">67.89 BNB</p>
+        <p className="text-3xl font-bold text-green-500">67.89 BNB</p>
         <EyeIcon color="" width="18" height="18" />
       </div>
       <p className="text-lg font-medium">
