@@ -5,7 +5,7 @@ const Usdtpage = () => {
   return (
     <div className="w-full flex justify-center items-center flex-col p-4 sm:p-8">
       <div className="flex gap-2 justify-center items-center">
-        <p className="text-3xl font-bold">$0.00USD</p>
+        <p className="text-3xl font-bold">67.89 BNB</p>
         <EyeIcon color="" width="18" height="18" />
       </div>
       <p className="text-lg font-medium">
@@ -44,7 +44,7 @@ const Usdtpage = () => {
         </div>
       </div>
       <div className="border w-full p-4">
-        <p className="font-medium">Cash out with New Crypto Wallet</p>
+        <p className="font-medium">Cash out with Neo Crypto Wallet</p>
         <p className="text-xs">Sell your crypto for cash</p>
       </div>
     </div>
