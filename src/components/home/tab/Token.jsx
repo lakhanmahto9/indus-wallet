@@ -29,7 +29,7 @@ const Token = () => {
           </div>
           <div>
             <p className="text-sm font-medium">BNB</p>
-            <p className="text-green-500 font-medium">+2.4%</p>
+            <p className="text-green-500 font-medium">+2.34%</p>
           </div>
         </div>
         <div>
