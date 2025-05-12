@@ -2,6 +2,7 @@ import React from "react";
 import {
   DownAeroIcon,
   FilterIcon,
+  PasswordIcon,
   VerticalThreeDotIcon,
 } from "../../../assets/icons/Icons";
 
@@ -32,9 +33,9 @@ const Token = () => {
             <p className="text-green-500 font-medium">+2.34%</p>
           </div>
         </div>
-        <div>
-          <p className="font-bold text-sm">$0.00</p>
-          <p className="font-bold text-sm text-slate-500">0 BNB</p>
+        <div className="flex flex-col justify-end">
+          <p className="font-bold text-sm text-end">$0.00</p>
+          <p className="font-bold text-sm text-slate-500 flex"> <PasswordIcon color="blue" width="14" height="14"/>67.89 BNB</p>
         </div>
       </div>
       <div className="flex justify-between items-center my-2 hover:bg-slate-50">
