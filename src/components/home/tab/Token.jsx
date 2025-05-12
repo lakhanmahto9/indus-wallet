@@ -22,19 +22,19 @@ const Token = () => {
         <div className="flex gap-1 justify-start items-center">
           <div>
             <img
-              src="/eth_logo.svg"
+              src="/bnb.svg"
               alt=""
               className="w-10 h-10 rounded-full"
             />
           </div>
           <div>
-            <p className="text-sm font-medium">Ehtereum</p>
-            <p className="text-red-500 font-medium">-7.3%</p>
+            <p className="text-sm font-medium">BNB</p>
+            <p className="text-green-500 font-medium">+2.4%</p>
           </div>
         </div>
         <div>
           <p className="font-bold text-sm">$0.00</p>
-          <p className="font-bold text-sm text-slate-500">0 ETH</p>
+          <p className="font-bold text-sm text-slate-500">0 BNB</p>
         </div>
       </div>
       <div className="flex justify-between items-center my-2 hover:bg-slate-50">
@@ -66,8 +66,8 @@ const Token = () => {
             />
           </div>
           <div>
-            <p className="text-sm font-medium">Ehtereum</p>
-            <p className="text-red-500 font-medium">-7.3%</p>
+            <p className="text-sm font-medium">Ehtereum Stake</p>
+            <p className="text-green-500 font-medium">+1.3%</p>
           </div>
         </div>
         <div>
