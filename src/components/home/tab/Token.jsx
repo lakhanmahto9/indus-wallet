@@ -34,8 +34,8 @@ const Token = () => {
           </div>
         </div>
         <div className="flex flex-col justify-end">
-          <p className="font-bold text-sm text-end">$0.00</p>
-          <p className="font-bold text-sm text-slate-500 flex"> <PasswordIcon color="blue" width="14" height="14"/>67.89 BNB</p>
+          <p className="font-bold text-sm text-green-500 text-end">$0.00</p>
+          <p className="font-bold text-sm text-green-500 flex"> <PasswordIcon color="#00ff00" width="14" height="14"/>67.89 BNB</p>
         </div>
       </div>
       <div className="flex justify-between items-center my-2 hover:bg-slate-50">

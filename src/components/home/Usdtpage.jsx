@@ -44,7 +44,7 @@ const Usdtpage = () => {
         </div>
       </div>
       <div className="border w-full p-4">
-        <p className="font-medium">Cash out with IndusWallet</p>
+        <p className="font-medium">Cash out with New Crypto Wallet</p>
         <p className="text-xs">Sell your crypto for cash</p>
       </div>
     </div>
