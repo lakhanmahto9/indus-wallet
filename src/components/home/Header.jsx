@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import AddNewAccountModal from "./modal/AddNewAccountModal";
 import { truncateString } from "./addressTruncate";
 import NetworkModal from "./minetmodal/NetworkModal";
+import SettingModal from "../setting/SettingModal";
 
 const Header = () => {
   const { address } = useSelector((state) => state.password);
@@ -15,6 +16,7 @@ const Header = () => {
   const [showModal, setShowModal] = useState(false);
   const [showMinModal, setShowMinModal] = useState(false);
   const [selectedNetwork, setSelectedNetwork] = useState("Ethereum Mainnet");
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     if (address) {
@@ -23,7 +25,7 @@ const Header = () => {
   }, []);
   const handleChangeNetwork = (network) => {
     setSelectedNetwork(network);
-    setShowMinModal(false)
+    setShowMinModal(false);
   };
 
   return (
@@ -41,12 +43,14 @@ const Header = () => {
         </div>
         <div className="w-1/6 sm:hidden"></div>
         <div className="w-4/6 md:w-1/3 flex flex-start flex-col">
-          <div
-            onClick={() => setShowModal(true)}
-            className="flex justify-center items-center text-sm font-bold px-1 rounded-full cursor-pointer gap-1 hover:bg-slate-100"
-          >
-            <img src="/icon.png" alt="" className="w-5 h-5 rounded-full" />{" "}
-            Account <DownAeroIcon coor="" width="14" height="14" />
+          <div className="flex justify-center">
+            <div
+              onClick={() => setShowModal(true)}
+              className="flex justify-center items-center text-sm font-bold px-1 rounded-full cursor-pointer gap-1 hover:bg-slate-100"
+            >
+              <img src="/icon.png" alt="" className="w-5 h-5 rounded-full" />{" "}
+              Account <DownAeroIcon coor="" width="14" height="14" />
+            </div>
           </div>
           <div className="flex justify-center items-center">
             <div className="border flex justify-center items-center text-sm font-bold px-4 rounded-full cursor-pointer gap-1 bg-slate-100">
@@ -55,8 +59,18 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <div className="w-1/6 md:w-1/3 flex justify-end">
-          <VerticalThreeDotIcon color="" width="14" height="14" />
+        <div className="w-1/6 md:w-1/3 flex justify-end relative">
+          <div
+            onClick={() => setShow(!show)}
+            className="p-1 rounded-md cursor-pointer hover:bg-slate-50"
+          >
+            <VerticalThreeDotIcon color="" width="14" height="14" />
+          </div>
+          {show && (
+            <div className="absolute top-8 bg-white w-60 rounded-lg border shadow-lg">
+              <SettingModal />
+            </div>
+          )}
         </div>
       </div>
       <AddNewAccountModal

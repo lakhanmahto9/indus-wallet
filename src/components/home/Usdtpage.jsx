@@ -4,6 +4,7 @@ import {
   BuySellIcon,
   EyeIcon,
   ImportIcon,
+  LockIcon,
   PasswordIcon,
   QRIcon,
   TransactionIcon,
@@ -14,7 +15,7 @@ const Usdtpage = () => {
     <div className="w-full flex justify-center items-center flex-col p-4 sm:p-8">
       <div className="flex gap-2 justify-center items-center">
         <p className="text-3xl font-bold text-green-500 flex gap-2 justify-center items-center">
-          <PasswordIcon color="#00ff00" width="24" height="24" />
+          <LockIcon color="#00ff00" width="24" height="24" />
           67.89 BNB
         </p>
         <EyeIcon color="" width="18" height="18" />
