@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   CopyIcon,
   DownAeroIcon,
@@ -12,6 +12,7 @@ import SettingModal from "../setting/SettingModal";
 
 const Header = () => {
   const { address } = useSelector((state) => state.password);
+  const modalRef = useRef();
   const [myAddress, setMyAddress] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [showMinModal, setShowMinModal] = useState(false);
@@ -27,6 +28,22 @@ const Header = () => {
     setSelectedNetwork(network);
     setShowMinModal(false);
   };
+
+  // useEffect(() => {
+  //   const handleClickOutside = (event) => {
+  //     if (modalRef.current && !modalRef.current.contains(event.target)) {
+  //       setShow(false);
+  //     }
+  //   };
+
+  //   if (show) {
+  //     document.addEventListener("mousedown", handleClickOutside);
+  //   }
+
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   };
+  // }, [show]);
 
   return (
     <div className="w-full bg-white shadow-md">
@@ -67,8 +84,11 @@ const Header = () => {
             <VerticalThreeDotIcon color="" width="14" height="14" />
           </div>
           {show && (
-            <div className="absolute top-8 bg-white w-60 rounded-lg border shadow-lg">
-              <SettingModal />
+            <div
+              // ref={modalRef}
+              className="absolute top-8 bg-white w-60 rounded-lg border shadow-lg"
+            >
+              <SettingModal closeModal={() => setShow(false)} />
             </div>
           )}
         </div>
